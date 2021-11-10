@@ -104,7 +104,7 @@ def midi_to_notes(midi, fs, hop, smooth, minduration):
     # print(len(midi),len(midi_filt))
 
     notes = []
-    p_prev = None
+    p_prev = 0 #None
     duration = 0
     onset = 0
     for n, p in enumerate(midi_filt):
