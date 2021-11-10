@@ -68,7 +68,7 @@ def save_midi(outfile, notes, tempo):
 
     track = 0
     time = 0
-    midifile = MIDIFile(1, adjust_origin=False)
+    midifile = MIDIFile(1)
 
     # Add track name and tempo.
     midifile.addTrackName(track, time, "MIDI TRACK")
@@ -118,7 +118,7 @@ def midi_to_notes(midi, fs, hop, smooth, minduration):
                 # only add notes that are long enough
                 if duration_sec >= minduration:
                     onset_sec = onset * hop / float(fs)
-                    notes.append((onset_sec, duration_sec, p_prev))
+                    notes.append((onset_sec, duration_sec, int(p_prev)))
 
             # start new note
             onset = n
@@ -130,7 +130,7 @@ def midi_to_notes(midi, fs, hop, smooth, minduration):
         # add note
         duration_sec = duration * hop / float(fs)
         onset_sec = onset * hop / float(fs)
-        notes.append((onset_sec, duration_sec, p_prev))
+        notes.append((onset_sec, duration_sec, int(p_prev)))
 
     return notes
 
