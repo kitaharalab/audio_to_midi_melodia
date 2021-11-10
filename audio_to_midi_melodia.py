@@ -68,7 +68,7 @@ def save_midi(outfile, notes, tempo):
 
     track = 0
     time = 0
-    midifile = MIDIFile(1)
+    midifile = MIDIFile(1, adjust_origin=False)
 
     # Add track name and tempo.
     midifile.addTrackName(track, time, "MIDI TRACK")
